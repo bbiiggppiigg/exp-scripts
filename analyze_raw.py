@@ -24,6 +24,7 @@ def analyze_align_sgpr_pairs(lines,x_i,sgpr_claimed):
         if lines[x_i].count(",") != 1:
             break
         addr,raw = lines[x_i].strip().split(",")
+        assert(raw[:256] == "0"*256)
         sgpr = raw[512:]
         sgpr = sgpr[::-1]
         sgpr = sgpr[:sgpr_claimed]
